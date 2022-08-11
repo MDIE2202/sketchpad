@@ -20,7 +20,7 @@ grid = (size) => {
 
 grid(100)
 
-rand_color = () =>{
+rand_color = (int) =>{
     let rand = Math.floor(Math.random()*255);
     let rand2 = Math.floor(Math.random()*255);
     let rand3 = Math.floor(Math.random()*255);
@@ -29,6 +29,7 @@ rand_color = () =>{
 }
 
 user_input = () => {
+
     user = prompt('Enter a grid size between 10 and 100:')
     if(user > 100){
         user = 100;
@@ -38,16 +39,15 @@ user_input = () => {
     }
     else{}
 
-    const clean = document.querySelector('.main_container')
+    const clean = document.querySelector('.main_container');
     clean.innerHTML = '';
     grid(user);
     hover_actions = document.querySelectorAll('.box');
-    hover_actions.forEach(box => box.addEventListener('mouseover', function(){this.style.backgroundColor = rand_color()}))   
-
+    hover_actions.forEach(box => box.addEventListener('mouseover', function(){this.style.backgroundColor = rand_color(this.style.backgroundColor)}));   
 }
 
 hover_actions = document.querySelectorAll('.box');
-hover_actions.forEach(box => box.addEventListener('mouseover', function(){this.style.backgroundColor = rand_color()}))
+hover_actions.forEach(box => box.addEventListener('mouseover', function(){this.style.backgroundColor = rand_color(this.style.backgroundColor)}));
 
 set_grid = document.querySelector('.set');
 set_grid.addEventListener('click', function(){user_input()});
