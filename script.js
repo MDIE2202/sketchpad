@@ -1,11 +1,11 @@
-grid = () => {
+grid = (size) => {
     let column = document.createElement('div');
     column.classList.add('column');
 
-    for (let i = 0; i < 16; i++){
+    for (let i = 0; i < size; i++){
         const row = document.createElement('div');
         row.classList.add('row'); 
-            for (let i = 0; i < 16; i++){
+            for (let i = 0; i < size; i++){
                 const box = document.createElement('div');
                 box.classList.add('box');
                 row.appendChild(box);
@@ -19,5 +19,9 @@ grid = () => {
 
 }
 
+grid(100)
 
-grid()
+
+
+hover_actions = document.querySelectorAll('.box');
+hover_actions.forEach(box => box.addEventListener('mouseover', function(){this.classList.add('color_change')}))
